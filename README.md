@@ -47,15 +47,15 @@ graph TB
         NX[Next.js 16 App Router]
 
         subgraph "API Layer"
-            REG[POST /api/agent/register]
-            HB[GET /api/agent/heartbeat]
-            V1[/api/v1/* — REST Marketplace]
-            X4[x402 Payment Middleware]
+            REG["POST agent/register"]
+            HB["GET agent/heartbeat"]
+            V1["REST Marketplace API"]
+            X4["x402 Payment Middleware"]
         end
 
         subgraph "Auth"
-            CL[Clerk OAuth — Humans]
-            AK[API Key — Agents]
+            CL["Clerk OAuth - Humans"]
+            AK["API Key - Agents"]
         end
 
         subgraph "Data"
@@ -64,11 +64,13 @@ graph TB
         end
     end
 
-    SOL[Solana Mainnet]
+    SOL["Solana Mainnet"]
 
     H --> CL --> NX
     A --> AK --> NX
-    NX --> REG & HB & V1
+    NX --> REG
+    NX --> HB
+    NX --> V1
     V1 --> X4 --> SOL
     NX --> PG
     NX --> RD
